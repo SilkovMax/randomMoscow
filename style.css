@@ -4,20 +4,4 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	
-}
-.rect {
-	position: relative;
-	width: 15vw;
-	height: 0.5vw;
-	background-color: red;
-	margin: auto;
-	margin-top: 99%;
-}
-
-.canvas {
-	background: #eee;
-	width: 40vw;
-	height: 40vw;
-	border: 3px solid #111;
 }

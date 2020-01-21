@@ -42,6 +42,7 @@ else {
 function runAreas(str){
     tobeAreasMoscow =str.split(",");
     document.getElementById('textAreas').value = arrayRandElement(tobeAreasMoscow);
+    lettersMove(document.getElementById('textAreas'));
     wasINareas.push(document.getElementById('textAreas').value);
     tobeAreasMoscow.splice(tobeAreasMoscow.indexOf(document.getElementById('textAreas').value),1);
 
@@ -51,7 +52,6 @@ function pushBut(){
     if (localStorage.getItem("areasMoscowStorage")) {
         if (localStorage["areasMoscowStorage"].length >1){
             runAreas(localStorage["areasMoscowStorage"]);
-            lettersMove();
             if (tobeAreasMoscow.length == 0)
                 localStorage.setItem("areasMoscowStorage", "1");
             else
@@ -76,47 +76,45 @@ randomB.oncontextmenu = function(){
 console.log(localStorage);
 
 //красивое появление текста
-function lettersMove(){
-let theLetters = "абвгдеёжзийклмнопрстуфхцчщъыьэюя#%&^+=-"; //You can customize what letters it will cycle through
-let ctnt = document.getElementById('textAreas').value; // Your text goes here
-console.log(ctnt);
-let speed = 50; // ms per frame
-let increment = 8; // frames per step. Must be >2
+function lettersMove(str){
+    let theLetters = "абвгдеёжзийклмнопрстуфхцчщъыьэюя#%&^+=-"; //You can customize what letters it will cycle through
+    let speed = 50; // ms per frame
+    let increment = 8; // frames per step. Must be >2
 
-
-let clen = ctnt.length;
-let si = 0;
-let stri = 0;
-let block = "";
-let fixed = "";
+    let ctnt = str.value;
+    let clen = str.value.length;
+    let si = 0;
+    let stri = 0;
+    let block = "";
+    let fixed = "";
 //Call self x times, whole function wrapped in setTimeout
-(function rustle (i) {
-setTimeout(function () {
-  if (--i){rustle(i);}
-  nextFrame(i);
-  si = si + 1;
-}, speed);
-})(clen*increment+1);
-function nextFrame(pos){
-  for (let i=0; i<clen-stri; i++) {
-    //Random number
-    let num = Math.floor(theLetters.length * Math.random());
-    //Get random letter
-    let letter = theLetters.charAt(num);
-    block = block + letter;
-  }
-  if (si == (increment-1)){
-    stri++;
-  }
-  if (si == increment){
-  // Add a letter;
-  // every speed*10 ms
-  fixed = fixed +  ctnt.charAt(stri - 1);
-  si = 0;
-  }
-  $("#textAreas").html(fixed + block);
-  block = "";
-}
+    (function rustle (i) {
+        setTimeout(function () {
+          if (--i){rustle(i);}
+          nextFrame(i);
+          si = si + 1;
+        }, speed);
+    })(clen*increment+1);
+
+    function nextFrame(pos){
+      for (let i=0; i<clen-stri; i++) {
+        let num = Math.floor(theLetters.length * Math.random());
+        let letter = theLetters.charAt(num);
+        block =  block + letter;
+      }
+      if (si == (increment-1)){
+        stri++;
+      }
+      if (si == increment){
+          console.log(stri);
+
+          fixed = ctnt.charAt(clen - stri) + fixed;
+
+          si = 0;
+      }
+      str.value = block + fixed;
+      block = "";
+    }
 };
 
 

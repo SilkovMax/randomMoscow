@@ -5,34 +5,33 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+
+    <div class="left-panel-wrapper">
+    <!-- <div class="left-panel">
+      some content some content some content some content some content some content some content some content some content
+    </div> -->
+    </div>
+
+
+
+	<div class="content" id="cont">
+	<p id="text"></p>
+	<input id="randomB" type="button" value="Случайный район">
+    <input id="textAreas" type="text" placeholder="Ты поедешь в ...">
+    </div>
+
+    <div class="right-panel-wrapper">
+      <!-- <div class="right-panel">
+        <p>some content some content some content some content some content some content some content some content some content </p>
+      </div> -->
+    </div>
+
     <div id="map">
-
-
-    <div class="page-wrapper">
-        <div class="left-panel-wrapper">
-          <div class="left-panel">
-            some content some content some content some content some content some content some content some content some content
-          </div>
-        </div>
-
-        <div class="content-wrapper">
-        	<div class="content">
-        	<p id="text"></p>
-        	<input id="randomB" type="button" value="Случайный район">
-            <input id="textAreas" type="text" placeholder="Ты поедешь в ...">
-            </div>
-        </div>
-
-        <div class="right-panel-wrapper">
-          <div class="right-panel">
-            <p>some content some content some content some content some content some content some content some content some content </p>
-          </div>
-        </div>
     </div>
-    </div>
+
     <script src="randomjs.js"></script>
-    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuHVAkA_ksgJCmrQ6giz6BKYCn3-0futc?callback=initMap"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuHVAkA_ksgJCmrQ6giz6BKYCn3-0futc"></script>
+    <script defer src="https://api-maps.yandex.ru/2.1?apikey=8f6cbfb1-7fc1-4838-995d-d780390e0e04&lang=ru_RU&onload=initMap"></script>
+
 
 	<noscript>
 		<span>Включите JS</span>

@@ -9,22 +9,22 @@ let zoom = 8;
 
 
 function initMap() {
-    let coordinates = {lat: 55.729504   , lng: 37.643587},
+    let coordinates = [55.729504,37.643587],
     // В переменной map создаем объект карты GoogleMaps и вешаем эту переменную на <div id="map"></div>
-    map = new google.maps.Map(document.getElementById('map'), {
+    map = new ymaps.Map('map', {
         // При создании объекта карты необходимо указать его свойства
         // center - определяем точку на которой карта будет центрироваться
         center: coordinates,
         // zoom - определяет масштаб. 0 - видно всю платнеу. 18 - видно дома и улицы города.
-        zoom: zoom,
-        disableDefaultUI: true,
-        scrollwheel: false
+        zoom: zoom
+        // disableDefaultUI: true,
+        // scrollwheel: false
     });
-    marker = new google.maps.Marker({
-            position: coordinates,
-            map: map,
-            animation: google.maps.Animation.BOUNCE
-    });
+    // marker = ymaps.Marker({
+    //         position: coordinates,
+    //         map: map,
+    //         animation: ymaps.Animation.BOUNCE
+    // });
 }
 
 function arrayRandElement(arr) {
@@ -140,6 +140,11 @@ function lettersMove(str){
     }
 };
 
-document.addEventListener('DOMContentLoaded', function() {
-    initMap();
-});
+function heightsite () {
+    document.getElementById('cont').style.top = document.documentElement.clientHeight/2-12.5 + 'px';
+
+}
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     initMap();
+// });
